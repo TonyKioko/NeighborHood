@@ -11,3 +11,42 @@ class neighborhood(models.Model):
     location=models.CharField(max_length=100, null=True, blank=True)
     description = HTMLField()
     user = models.ForeignKey(User, null=True)
+
+    def save_hood(self):
+	    self.save()
+    def __str__(self):
+	    return self.name
+class Profile(models.Model):
+    # photo = models.ImageField(upload_to='profpics/',default='NO IMAGE')
+    bio = HTMLField(default="Noisy Neigbhors")
+    photo = models.ImageField(upload_to='profpics/',default='NO IMAGE')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile",primary_key=True)
+    neighborhood=models.ForeignKey(neighborhood, on_delete=models.CASCADE,null=True,blank=True)
+    email = models.CharField(max_length=60,blank=True)
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
+
+    def __str__(self):
+        return self.user.username
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    @classmethod
+    def filter_by_id(cls, id):
+        profile = Profile.objects.filter(user = id).first()
+        return profile
+    @classmethod
+    def get_by_id(cls, id):
+        profile = Profile.objects.get(user = id)
+        return profile
