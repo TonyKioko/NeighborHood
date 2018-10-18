@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.utils import timezone
 # Create your models here.
 
-class neighborhood(models.Model):
+class Neighborhood(models.Model):
     name = models.CharField(max_length=40, null=True, blank=True)
     location=models.CharField(max_length=100, null=True, blank=True)
     description = HTMLField()
@@ -17,11 +17,10 @@ class neighborhood(models.Model):
     def __str__(self):
 	    return self.name
 class Profile(models.Model):
-    # photo = models.ImageField(upload_to='profpics/',default='NO IMAGE')
     bio = HTMLField(default="Noisy Neigbhors")
     photo = models.ImageField(upload_to='profpics/',default='NO IMAGE')
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile",primary_key=True)
-    neighborhood=models.ForeignKey(neighborhood, on_delete=models.CASCADE,null=True,blank=True)
+    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True)
     email = models.CharField(max_length=60,blank=True)
 
     @receiver(post_save, sender=User)
@@ -50,3 +49,10 @@ class Profile(models.Model):
     def get_by_id(cls, id):
         profile = Profile.objects.get(user = id)
         return profile
+class Business(models.Model):
+	name=models.CharField(max_length=40, null=True, blank=True)
+	user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+	neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True)
+	email = models.EmailField(max_length=100, null=True, blank=True)
+
+    
