@@ -45,3 +45,18 @@ def new_business(request):
 			form = BusinessForm()
             # context= {"form":form}
 	return render(request, 'new_business.html',{"form":form})
+
+def new_alert(request):
+	current_user = request.user
+	if request.method == 'POST':
+		form = AlertForm(request.POST,request.FILES)
+		if form.is_valid():
+			new_business = form.save(commit=False)
+			new_business.user = current_user
+			new_business.save()
+            # messages.success(request, "Image uploaded!")
+			return redirect('index')
+	else:
+			form = AlertForm()
+            # context= {"form":form}
+	return render(request, 'new_alert.html',{"form":form})
