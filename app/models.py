@@ -54,6 +54,19 @@ class Business(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
-    
+
     def __str__(self):
         return self.name
+
+class Alert(models.Model):
+	alert=HTMLField(default="")
+	user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+	neighbor_hood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True)
+	date_posted = models.DateTimeField(auto_now=True)
+
+
+class Comment(models.Model):
+    comment = HTMLField(default="")
+    user = models.ForeignKey(User,on_delete=models.CASCADE, null=True, blank=True)
+    date_posted = models.DateTimeField(auto_now=True)
+    alert=models.ForeignKey(Alert, on_delete=models.CASCADE)
