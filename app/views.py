@@ -30,3 +30,18 @@ def new_nhood(request):
 			form = NeighborhoodForm()
             # context= {"form":form}
 	return render(request, 'new_nhood.html',{"form":form})
+
+def new_business(request):
+	current_user = request.user
+	if request.method == 'POST':
+		form = BusinessForm(request.POST,request.FILES)
+		if form.is_valid():
+			new_business = form.save(commit=False)
+			new_business.user = current_user
+			new_business.save()
+            # messages.success(request, "Image uploaded!")
+			return redirect('index')
+	else:
+			form = BusinessForm()
+            # context= {"form":form}
+	return render(request, 'new_business.html',{"form":form})
