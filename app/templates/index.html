@@ -28,7 +28,9 @@
           </div>
           <div class="card-body">
             <div class="card-text">
+<a href="{% url 'join_hood' id=hood.id%}" class="btn btn-info btn-block">Join Hood</a>
 
+<a href="{% url 'exit_hood' id=hood.id%}" class="btn btn-danger btn-block">Exit Hood</a>
             </div>
           </div>
         </div>

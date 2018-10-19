@@ -38,7 +38,13 @@ def join_hood(request,id):
     request.user.profile.neighborhood = hood
     request.user.profile.save()
     return redirect(index)
-
+@login_required
+def exit_hood(request,id):
+    hood = get_object_or_404(Neighborhood, pk=id)
+    if request.user.profile.neighborhood == hood:
+        request.user.profile.neighborhood=None
+        request.user.profile.save()
+    return redirect('index')
 def new_business(request):
 	current_user = request.user
 	if request.method == 'POST':
