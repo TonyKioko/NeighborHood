@@ -10,10 +10,6 @@ urlpatterns = [
     url(r'^new_business/$',views.new_business,name='add_business'),
     url(r'^alert/$',views.new_alert,name='new_alert'),
 
-
-
-
-
     ]
 
 if settings.DEBUG:

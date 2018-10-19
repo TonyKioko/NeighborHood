@@ -11,8 +11,8 @@ def index(request):
 
     message = "Hello World"
 
-
-    context ={"message":message}
+    nhoods = Neighborhood.objects.all()
+    context ={"nhoods":nhoods,"message":message}
 
     return render(request,'index.html',context)
 # @login_required(login_url='/accounts/login')
