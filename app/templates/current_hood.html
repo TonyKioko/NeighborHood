@@ -1,12 +1,20 @@
 {%extends 'base.html'%} {% load static %} {% load bootstrap4 %} {% block content %}
 
 {% with request.user.wewe.neighborhood as myhood %}
+{% if myhood %}
 <h2 style="vertical-align: middle"><strong>{{myhood.name}}</strong></h2>
 
 <strong>{{ myhood.members.count }} members</strong>
 
 <div><i>{{ myhood.description | striptags }}</i></div>
-
+<a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
+{% else%}
+<h3>{% with request.user as name%}
+  {{name.username}} you are currently not subscribed to any Neighborhood <br>
+  Please Join a hood <br>
+{% endwith%}
+</h3>
+{%endif%}
 {% endwith %}
 
 {% endblock %}
