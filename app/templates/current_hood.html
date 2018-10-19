@@ -10,9 +10,14 @@
 <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
 
 {% for business in currenthood.businesses.all %}
-
-
-{% endfor %}
+THis is nonsense
+<!-- {% if business%} -->
+<p>Name : {{business.name}}</p>
+<p>{{business.propreiter.username}} as business owner </p>
+<!-- {% else %}
+<p>This hood has no business</p>
+{% endif %} -->
+{% endfor%}
 {% else%}
 <h3>{% with request.user as name%}
   {{name.username}} you are currently not subscribed to any Neighborhood <br>

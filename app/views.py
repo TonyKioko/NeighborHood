@@ -53,28 +53,30 @@ def exit_hood(request,id):
         request.user.wewe.save()
     return redirect('index')
 def new_business(request):
-	current_user = request.user
-	if request.method == 'POST':
-		form = BusinessForm(request.POST,request.FILES)
-		if form.is_valid():
-			new_business = form.save(commit=False)
-			new_business.user = current_user
-			new_business.save()
+    current_user = request.user
+    if request.method == 'POST':
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_business = form.save(commit=False)
+            new_business.user = current_user
+            new_business.neighborhood=request.user.wewe.neighborhood
+            assert isinstance(new_business.save, object)
+            new_business.save()
             # messages.success(request, "Image uploaded!")
-			return redirect('index')
-	else:
-			form = BusinessForm()
-            # context= {"form":form}
-	return render(request, 'new_business.html',{"form":form})
+            return redirect('index')
+    else:
+        form = BusinessForm()
+        # context= {"form":form}
+    return render(request, 'new_business.html',{"form":form})
 
 def new_alert(request):
 	current_user = request.user
 	if request.method == 'POST':
 		form = AlertForm(request.POST,request.FILES)
 		if form.is_valid():
-			new_business = form.save(commit=False)
-			new_business.user = current_user
-			new_business.save()
+			# new_business = form.save(commit=False)
+			# new_business.user = current_user
+			# new_business.save()
             # messages.success(request, "Image uploaded!")
 			return redirect('index')
 	else:
