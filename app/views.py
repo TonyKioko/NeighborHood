@@ -31,6 +31,14 @@ def new_nhood(request):
             # context= {"form":form}
 	return render(request, 'new_nhood.html',{"form":form})
 
+
+# @login_required
+def join_hood(request,id):
+    hood = get_object_or_404(Neighborhood, pk=id)
+    request.user.profile.neighborhood = hood
+    request.user.profile.save()
+    return redirect(index)
+
 def new_business(request):
 	current_user = request.user
 	if request.method == 'POST':

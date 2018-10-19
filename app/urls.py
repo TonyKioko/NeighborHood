@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^new_business/$',views.new_business,name='add_business'),
     url(r'^alert/$',views.new_alert,name='new_alert'),
     url(r'^searched/', views.search_business, name='search'),
+    url('^join/(?P<id>\d+)$', join_hood, name='join_hood'),
 
 
     ]

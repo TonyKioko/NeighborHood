@@ -4,9 +4,39 @@
 <h1>
   {{message}}
 </h1>
-
+<div class="container">
+  <div class="row">
 {% for hood in nhoods%}
- <p>{{hood.name}}</p>
-{% endfor %}
 
+        <div class="card" style="height:360px;width:400px;;margin-bottom:10px;">
+          <div class="card-body">
+            <!-- <a href="{{project.link}}"> -->
+                <div class="img-cont">
+                  <img class="card-img-top img-responsive i-images" src="{{hood.photo.url}}" style="height:260px;">
+                  <div class="overlay">
+                  <div class="text">{{hood.name}}</div>
+                  {% autoescape off %}
+
+                  <div class="text">{{hood.description}}</div>
+                  {% endautoescape %}
+
+        </div>
+                </div>
+
+    <br>
+
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+
+            </div>
+          </div>
+        </div>
+
+  </div>
+</div>
+<!-- {% for hood in nhoods%}
+ <p>{{hood.name}}</p>
+{% endfor %} -->
+{% endfor %}
 {% endblock %}
