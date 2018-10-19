@@ -1,13 +1,18 @@
 {%extends 'base.html'%} {% load static %} {% load bootstrap4 %} {% block content %}
 
-{% with request.user.wewe.neighborhood as myhood %}
-{% if myhood %}
-<h2 style="vertical-align: middle"><strong>{{myhood.name}}</strong></h2>
+{% with request.user.wewe.neighborhood as currenthood %}
+{% if currenthood %}
+<h2 style="vertical-align: middle"><strong>{{currenthood.name}}</strong></h2>
 
-<strong>{{ myhood.members.count }} members</strong>
+<strong>{{ currenthood.members.count }} members</strong>
 
-<div><i>{{ myhood.description | striptags }}</i></div>
+<div><i>{{ currenthood.description | striptags }}</i></div>
 <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
+
+{% for business in currenthood.businesses.all %}
+
+
+{% endfor %}
 {% else%}
 <h3>{% with request.user as name%}
   {{name.username}} you are currently not subscribed to any Neighborhood <br>

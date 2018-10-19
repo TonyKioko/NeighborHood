@@ -52,7 +52,7 @@ class Profile(models.Model):
         return profile
 class Business(models.Model):
     name=models.CharField(max_length=40, null=True, blank=True)
-    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    propreiter=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="businesses")
     email = models.EmailField(max_length=100, null=True, blank=True)
 
