@@ -1,0 +1,12 @@
+{%extends 'base.html'%} {% load static %} {% load bootstrap4 %} {% block content %}
+
+{% with request.user.wewe.neighborhood as myhood %}
+<h2 style="vertical-align: middle"><strong>{{myhood.name}}</strong></h2>
+
+<strong>{{ myhood.members.count }} members</strong>
+
+<div><i>{{ myhood.description | striptags }}</i></div>
+
+{% endwith %}
+
+{% endblock %}

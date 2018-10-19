@@ -32,8 +32,8 @@ def new_nhood(request):
 	return render(request, 'new_nhood.html',{"form":form})
 
 @login_required
-def myhood(request):
-    return render(request, 'myhood.html')
+def current_hood(request):
+    return render(request, 'current_hood.html')
 
 # @login_required
 def join_hood(request,id):
