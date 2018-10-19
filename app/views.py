@@ -60,3 +60,23 @@ def new_alert(request):
 			form = AlertForm()
             # context= {"form":form}
 	return render(request, 'new_alert.html',{"form":form})
+
+def search_business(request):
+    # profile = Profile.get_profile()
+
+    # if 'caption' in request.GET and request.GET["caption"]:
+    if 'name' in request.GET and request.GET["name"]:
+
+        search_term = request.GET.get("name")
+        found_businesses = Business.search_by_name(search_term)
+        message = f"{search_term}"
+        print(search_term)
+
+        context = {"found_businesses":found_businesses,"message":message}
+
+        return render(request, 'search.html',context)
+
+    else:
+        message = "You haven't searched for any term"
+        # context={"message":message}
+        return render(request, 'search.html',{"message":message})

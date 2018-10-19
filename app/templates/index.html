@@ -1,3 +1,6 @@
+{%extends 'base.html'%} {% load static %} {% load bootstrap4 %} {% block content %}
+
+
 <h1>
   {{message}}
 </h1>
@@ -5,3 +8,5 @@
 {% for hood in nhoods%}
  <p>{{hood.name}}</p>
 {% endfor %}
+
+{% endblock %}

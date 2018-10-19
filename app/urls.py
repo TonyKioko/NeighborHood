@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^new_nhood/$',views.new_nhood,name='add_neighborhood'),
     url(r'^new_business/$',views.new_business,name='add_business'),
     url(r'^alert/$',views.new_alert,name='new_alert'),
+    url(r'^searched/', views.search_business, name='search'),
+
 
     ]
 

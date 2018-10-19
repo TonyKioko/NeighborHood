@@ -10,6 +10,7 @@ class Neighborhood(models.Model):
     name = models.CharField(max_length=40, null=True, blank=True)
     location=models.CharField(max_length=100, null=True, blank=True)
     description = HTMLField()
+    photo = models.ImageField(upload_to='profpics/',default='NO IMAGE')
     user = models.ForeignKey(User, null=True)
 
     def save_hood(self):
@@ -57,6 +58,10 @@ class Business(models.Model):
 
     def __str__(self):
         return self.name
+    @classmethod
+    def search_by_name(cls,search_term):
+    	businesses = cls.objects.filter(name__icontains=search_term)
+    	return businesses
 
 class Alert(models.Model):
 	alert=HTMLField(default="")
