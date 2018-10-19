@@ -20,8 +20,8 @@ class Neighborhood(models.Model):
 class Profile(models.Model):
     bio = HTMLField(default="Noisy Neigbhors")
     photo = models.ImageField(upload_to='profpics/',default='NO IMAGE')
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile",primary_key=True)
-    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="wewe",primary_key=True)
+    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="members")
     email = models.CharField(max_length=60,blank=True)
 
     @receiver(post_save, sender=User)
@@ -31,7 +31,7 @@ class Profile(models.Model):
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+        instance.wewe.save()
 
     def __str__(self):
         return self.user.username

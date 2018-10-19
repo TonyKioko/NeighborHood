@@ -31,19 +31,26 @@ def new_nhood(request):
             # context= {"form":form}
 	return render(request, 'new_nhood.html',{"form":form})
 
+@login_required
+def myhood(request):
+    return render(request, 'myhood.html')
 
 # @login_required
 def join_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
-    request.user.profile.neighborhood = hood
-    request.user.profile.save()
+    request.user.wewe.neighborhood = hood
+    request.user.wewe.save()
+    # messages.success(request, "Image uploaded!")
     return redirect(index)
 @login_required
 def exit_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
-    if request.user.profile.neighborhood == hood:
-        request.user.profile.neighborhood=None
-        request.user.profile.save()
+    if request.user.wewe.neighborhood == hood:
+        # request.user.wewe.neighborhood = Null
+        # request.user.wewe.neighborhood = False
+        # messages.success(request, "Image uploaded!")
+        request.user.wewe.neighborhood = None
+        request.user.wewe.save()
     return redirect('index')
 def new_business(request):
 	current_user = request.user

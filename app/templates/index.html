@@ -6,6 +6,11 @@
 </h1>
 <div class="container">
   <div class="row">
+    <div class="col-md-3"></div>
+<a href="{% url 'add_neighborhood'%}" class="btn btn-info btn-lg">Create Hood</a>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
 {% for hood in nhoods%}
 
         <div class="card" style="height:360px;width:400px;;margin-bottom:10px;">
@@ -19,6 +24,7 @@
 
                   <div class="text">{{hood.description}}</div>
                   {% endautoescape %}
+                  <div class="text">{{hood.members.count}}</div>
 
         </div>
                 </div>
@@ -28,17 +34,18 @@
           </div>
           <div class="card-body">
             <div class="card-text">
+
 <a href="{% url 'join_hood' id=hood.id%}" class="btn btn-info btn-block">Join Hood</a>
 
 <a href="{% url 'exit_hood' id=hood.id%}" class="btn btn-danger btn-block">Exit Hood</a>
             </div>
           </div>
         </div>
-
+{% endfor %}
   </div>
 </div>
 <!-- {% for hood in nhoods%}
  <p>{{hood.name}}</p>
 {% endfor %} -->
-{% endfor %}
+
 {% endblock %}
