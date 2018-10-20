@@ -64,9 +64,9 @@ class Business(models.Model):
     	return businesses
 
 class Alert(models.Model):
-	alert=HTMLField(default="")
+	alert=HTMLField()
 	posted_by=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
-	neighbor_hood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="alerts")
+	neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="alerts")
 	date_posted = models.DateTimeField(auto_now=True)
 
 
