@@ -9,7 +9,14 @@
 <div><i>{{ currenthood.description | striptags }}</i></div>
 
 <a href="{% url 'new_alert'%}" class="btn btn-info btn-outline">New Post</a>
+
+{% for alert in currenthood.alerts.all %}
+New alerts
+<p>{{alert.alert}}</p>
+{% endfor%}
+
 <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
+
 
 {% for business in currenthood.businesses.all %}
 THis is nonsense

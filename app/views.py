@@ -70,19 +70,21 @@ def new_business(request):
     return render(request, 'new_business.html',{"form":form})
 
 def new_alert(request):
-	current_user = request.user
-	if request.method == 'POST':
-		form = AlertForm(request.POST,request.FILES)
-		if form.is_valid():
-			# new_business = form.save(commit=False)
-			# new_business.user = current_user
-			# new_business.save()
+    current_user = request.user
+    if request.method == 'POST':
+        form = AlertForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_alert = form.save(commit=False)
+            new_alert.user = current_user
+            new_alert.neighborhood=request.user.wewe.neighborhood
+            assert isinstance(new_alert.save, object)
+            new_alert.save()
             # messages.success(request, "Image uploaded!")
-			return redirect('index')
-	else:
-			form = AlertForm()
-            # context= {"form":form}
-	return render(request, 'new_alert.html',{"form":form})
+            return redirect('index')
+    else:
+        form = AlertForm()
+                # context= {"form":form}
+    return render(request, 'new_alert.html',{"form":form})
 
 def search_business(request):
     # profile = Profile.get_profile()
