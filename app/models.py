@@ -13,8 +13,10 @@ class Neighborhood(models.Model):
     photo = models.ImageField(upload_to='profpics/',default='profpics/default.jpg')
     user = models.ForeignKey(User, null=True)
 
-    def save_hood(self):
+    def create_neighborhood(self):
         self.save()
+    def delete_neighborhood(self):
+        self.delete()
     def __str__(self):
         return self.name
 class Profile(models.Model):

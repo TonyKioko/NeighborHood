@@ -9,16 +9,15 @@
 
   <strong>Hood population : {{ currenthood.members.count }} members</strong>
 
-  <div><i>{{ currenthood.description | striptags }}</i></div></div>
 <div class="col-md-4"></div>
   </div>
 
 
 <hr>
 <div class="row">
-  <!-- <div class="col-md-1"></div> -->
+<div class="row" style="width:40%;float:left;">
 
-  <div class="col-md-5" id="posts">
+  <div class="col-md" id="posts"style="">
       <a href="{% url 'new_alert'%}" class="btn btn-info btn-outline">Create Post</a>
     {% for alert in currenthood.alerts.all %}
 
@@ -40,7 +39,10 @@
 
   </div>
             {% endfor%}
-  <div class="col-md-5" id="business">
+
+          </div>
+<div class="row" style="width:40%;float:right;margin-top:-200px;">
+  <div class="col-md-5" id="business" style="float:right;">
     <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
 
     {% for business in currenthood.businesses.all %}
@@ -55,8 +57,12 @@
     {% endwith%}
     </h3>
   </div>
-  <!-- <div class="col-md-1"></div> -->
 </div>
+</div>
+
+
+  <!-- <div class="col-md-1"></div> -->
+<!-- </div> -->
 
 
 
