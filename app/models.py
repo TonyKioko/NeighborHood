@@ -17,6 +17,9 @@ class Neighborhood(models.Model):
         self.save()
     def delete_neighborhood(self):
         self.delete()
+    @classmethod
+    def find_neighborhood(cls,search_term):
+        hood = cls.objects.filter(name__icontains = search_term)
     def __str__(self):
         return self.name
 class Profile(models.Model):
