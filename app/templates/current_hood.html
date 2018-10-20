@@ -11,18 +11,16 @@
 <a href="{% url 'new_alert'%}" class="btn btn-info btn-outline">New Post</a>
 
 {% for alert in currenthood.alerts.all %}
-New alerts
-<p>{{alert.alert}}</p>
+<p>{{alert.posted_by.username}} says {{alert.alert | striptags}}</p>
 {% endfor%}
 
 <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
 
 
 {% for business in currenthood.businesses.all %}
-THis is nonsense
 <!-- {% if business%} -->
 <p>Name : {{business.name}}</p>
-<p>{{business.propreiter.username}} as business owner </p>
+<p>Owner : {{business.propreiter.username}}</p>
 <!-- {% else %}
 <p>This hood has no business</p>
 {% endif %} -->
