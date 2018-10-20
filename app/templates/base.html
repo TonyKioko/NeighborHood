@@ -10,13 +10,23 @@
   {% else %}
     <title> NeighborHood </title>
   {% endif %}
-  {% if messages %}
-    <ul class="messages">
+  <!-- {% if messages %}
+
       {% for message in messages %}
-        <li class="{{ message.tags }}">{{ message }}</li>
+  	    {% if message.tags == 'success' %}
+  	    <div class="message alert alert-success alert-dismissible" role="alert">
+  	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	    {{ message }}</div>
+  	    {%else%}
+  	    <div class="alert alert-danger alert-dismissible" role="alert">
+  	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	    {{ message }}</div>
+  	    {%endif%}
+
+
       {% endfor %}
-    </ul>
-  {% endif %}
+
+  {% endif %} -->
 
 
   {% block styles %}
@@ -31,10 +41,21 @@
     {% include "navbar.html" %}
 
     {% block content %} {%endblock%}
+    <script>
+    $(document).ready(function() {
+        // messages timeout for 10 sec
+        setTimeout(function() {
+            $('.message').fadeOut('slow');
+        }, 100); // <-- time in milliseconds, 1000 =  1 sec
 
-    {% block scripts %}
+
+    });
+</script>
+
+    <!-- {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     {% bootstrap_javascript %}
+     {% bootstrap_javascript %} -->
+
     {% endblock %}
 </body>
 </html>

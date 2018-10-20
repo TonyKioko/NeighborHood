@@ -4,6 +4,8 @@ from app.models import *
 from app.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
+
 
 # Create your views here.
 # @login_required(login_url='/accounts/login/')
@@ -40,7 +42,7 @@ def join_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
     request.user.wewe.neighborhood = hood
     request.user.wewe.save()
-    # messages.success(request, "Image uploaded!")
+    messages.success(request, "Image uploaded!")
     return redirect(index)
 @login_required
 def exit_hood(request,id):
@@ -62,7 +64,7 @@ def new_business(request):
             new_business.neighborhood=request.user.wewe.neighborhood
             assert isinstance(new_business.save, object)
             new_business.save()
-            # messages.success(request, "Image uploaded!")
+            messages.success(request, "Image uploaded!")
             return redirect('index')
     else:
         form = BusinessForm()
@@ -79,7 +81,7 @@ def new_alert(request):
             new_alert.neighborhood=request.user.wewe.neighborhood
             assert isinstance(new_alert.save, object)
             new_alert.save()
-            # messages.success(request, "Image uploaded!")
+            messages.success(request, "Image uploaded!")
             return redirect('index')
     else:
         form = AlertForm()
