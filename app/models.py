@@ -10,7 +10,7 @@ class Neighborhood(models.Model):
     name = models.CharField(max_length=40, null=True, blank=True)
     location=models.CharField(max_length=100, null=True, blank=True)
     description = HTMLField()
-    photo = models.ImageField(upload_to='profpics/',default='profpics/default.png')
+    photo = models.ImageField(upload_to='profpics/',default='profpics/default.jpg')
     user = models.ForeignKey(User, null=True)
 
     def save_hood(self):

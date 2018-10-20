@@ -7,6 +7,8 @@
 <strong>{{ currenthood.members.count }} members</strong>
 
 <div><i>{{ currenthood.description | striptags }}</i></div>
+
+<a href="{% url 'new_alert'%}" class="btn btn-info btn-outline">New Post</a>
 <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
 
 {% for business in currenthood.businesses.all %}

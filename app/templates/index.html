@@ -17,7 +17,7 @@
   <div class="row">
 {% for hood in nhoods%}
 
-        <div class="card" style="height:360px;width:400px;;margin-bottom:10px;">
+        <div class="card" style="height:360px;width:400px;;margin:60px;">
           <div class="card-body">
             <!-- <a href="{{project.link}}"> -->
                 <div class="img-cont">
@@ -30,20 +30,24 @@
                   {% endautoescape %}
                   <div class="text">{{hood.members.count}}</div>
 
+                  <a href="{% url 'join_hood' id=hood.id%}" class="btn btn-info btn-block">Join Hood</a>
+
+                  <a href="{% url 'exit_hood' id=hood.id%}" class="btn btn-danger btn-block">Exit Hood</a>
+
         </div>
                 </div>
 
     <br>
 
           </div>
-          <div class="card-body">
-            <div class="card-text">
+          <!-- <div class="card-body">
+            <div class="card-text"> -->
 
-<a href="{% url 'join_hood' id=hood.id%}" class="btn btn-info btn-block">Join Hood</a>
+<!-- <a href="{% url 'join_hood' id=hood.id%}" class="btn btn-info btn-block">Join Hood</a>
 
-<a href="{% url 'exit_hood' id=hood.id%}" class="btn btn-danger btn-block">Exit Hood</a>
-            </div>
-          </div>
+<a href="{% url 'exit_hood' id=hood.id%}" class="btn btn-danger btn-block">Exit Hood</a> -->
+            <!-- </div>
+          </div> -->
         </div>
 {% endfor %}
   </div>
