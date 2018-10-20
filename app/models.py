@@ -20,6 +20,9 @@ class Neighborhood(models.Model):
     @classmethod
     def find_neighborhood(cls,search_term):
         hood = cls.objects.filter(name__icontains = search_term)
+    @classmethod
+    def update_neighborhood(cls,id ,name, description ,location,photo):
+        updated_neighborhood = cls.objects.filter(id = id).update(name = name, description = description ,location = location,category = category,photo=photo)
     def __str__(self):
         return self.name
 class Profile(models.Model):
