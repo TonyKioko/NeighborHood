@@ -28,7 +28,7 @@
 
                   <div class="text">{{hood.description}}</div>
                   {% endautoescape %}
-                  <div class="text">{{hood.members.count}}</div>
+                  <div class="text">Members : {{hood.members.count}}</div>
 
                   <a href="{% url 'join_hood' id=hood.id%}" class="btn btn-info btn-block">Join Hood</a>
 
