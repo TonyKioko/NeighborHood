@@ -27,7 +27,7 @@ class Neighborhood(models.Model):
         return self.name
 class Profile(models.Model):
     bio = HTMLField(default="Noisy Neigbhors")
-    photo = models.ImageField(upload_to='profpics/',default='NO IMAGE')
+    photo = models.ImageField(upload_to='profpics/',default='profpics/prof.png')
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="wewe",primary_key=True)
     neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="members")
     email = models.CharField(max_length=60,blank=True)
