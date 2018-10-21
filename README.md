@@ -74,11 +74,10 @@ Refer to this guide: [deployment to heroku](https://github.com/Benard18/Deployme
 ```bash
 python manage.py app test
 ```
-
 ## Live Demo
 
 The web app can be accessed from the following link:
-[PyAwards](https://pyawards.herokuapp.com/)
+[NeighborHood](https://pyawards.herokuapp.com/)
 
 ## Technology used
 
