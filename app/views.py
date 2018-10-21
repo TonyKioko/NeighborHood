@@ -43,7 +43,7 @@ def join_hood(request,id):
     request.user.wewe.neighborhood = hood
     request.user.wewe.save()
     messages.success(request, "Image uploaded!")
-    return redirect(index)
+    return redirect('current_hood')
 @login_required
 def exit_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
