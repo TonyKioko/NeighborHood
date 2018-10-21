@@ -20,7 +20,8 @@ def signup(request):
         form = SignUpForm()
 
     return render(request, 'registration/registration_form.html', {'form': form})
-# @login_required(login_url='/accounts/login/')
+
+@login_required(login_url='/accounts/login/')
 def index(request):
 
     message = "Hello World"
@@ -29,7 +30,8 @@ def index(request):
     context ={"nhoods":nhoods,"message":message}
 
     return render(request,'index.html',context)
-# @login_required(login_url='/accounts/login')
+
+@login_required(login_url='/accounts/login')
 def new_nhood(request):
 	current_user = request.user
 	if request.method == 'POST':
@@ -45,18 +47,19 @@ def new_nhood(request):
             # context= {"form":form}
 	return render(request, 'new_nhood.html',{"form":form})
 
-@login_required
+@login_required(login_url='/accounts/login/')
 def current_hood(request):
     return render(request, 'current_hood.html')
 
-# @login_required
+@login_required(login_url='/accounts/login/')
 def join_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
     request.user.wewe.neighborhood = hood
     request.user.wewe.save()
     messages.success(request, "Image uploaded!")
     return redirect('current_hood')
-@login_required
+
+@login_required(login_url='/accounts/login/')
 def exit_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
     if request.user.wewe.neighborhood == hood:
@@ -66,6 +69,8 @@ def exit_hood(request,id):
         request.user.wewe.neighborhood = None
         request.user.wewe.save()
     return redirect('index')
+
+@login_required(login_url='/accounts/login/')
 def new_business(request):
     current_user = request.user
     if request.method == 'POST':
@@ -83,6 +88,7 @@ def new_business(request):
         # context= {"form":form}
     return render(request, 'new_business.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
 def new_alert(request):
     current_user = request.user
     if request.method == 'POST':
@@ -100,6 +106,7 @@ def new_alert(request):
                 # context= {"form":form}
     return render(request, 'new_alert.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
 def search_business(request):
     # profile = Profile.get_profile()
 
