@@ -84,6 +84,12 @@ class Alert(models.Model):
     neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="alerts")
     date_posted = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.alert
+    def save_alert(self):
+        self.save()
+    def delete_alert(self):
+        self.delete()
     class Meta:
         ordering = ['alert']
 
@@ -92,3 +98,10 @@ class Comment(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True, blank=True)
     date_posted = models.DateTimeField(auto_now=True)
     alert=models.ForeignKey(Alert, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.comment
+    def save_comment(self):
+        self.save()
+    def delete_comment(self):
+        self.delete()
