@@ -109,7 +109,6 @@ class AlertTestClass(TestCase):
         self.alert = Alert(alert='New in the hood',posted_by=self.user,neighborhood=self.hood)
         self.alert.save_alert()
 
-
     def tearDown(self):
         Alert.objects.all().delete()
 

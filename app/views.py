@@ -8,6 +8,18 @@ from django.contrib import messages
 
 
 # Create your views here.
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('index')
+    else:
+        form = SignUpForm()
+
+    return render(request, 'registration/registration_form.html', {'form': form})
 # @login_required(login_url='/accounts/login/')
 def index(request):
 
