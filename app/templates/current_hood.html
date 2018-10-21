@@ -54,8 +54,8 @@
 
         <div class="col-md-4 tab-pane fade" id="zanzibar" style="">
           <div class="" id="business" style="">
-            <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
-            <hr> {% for business in currenthood.businesses.all %}
+            <!-- <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a> -->
+            {% for business in currenthood.businesses.all %}
             <div class="card" style="width: 18rem;">
               <div class="card-header">
                 Name : {{business.name}}
@@ -66,7 +66,7 @@
               </ul>
             </div>
 
-            <hr> {% endfor%} {% else%}
+            <br> {% endfor%} {% else%}
             {% with request.user as name%}
       <div class="row">
         <div class="col-md-12">

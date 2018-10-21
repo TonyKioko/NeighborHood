@@ -65,7 +65,7 @@ def new_business(request):
             assert isinstance(new_business.save, object)
             new_business.save()
             messages.success(request, "Image uploaded!")
-            return redirect('index')
+            return redirect('current_hood')
     else:
         form = BusinessForm()
         # context= {"form":form}
@@ -82,7 +82,7 @@ def new_alert(request):
             assert isinstance(new_alert.save, object)
             new_alert.save()
             messages.success(request, "Image uploaded!")
-            return redirect('index')
+            return redirect('current_hood')
     else:
         form = AlertForm()
                 # context= {"form":form}
