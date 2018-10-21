@@ -95,3 +95,34 @@ class BusinessTestClass(TestCase):
         self.business.delete_business()
         business = Business.objects.all()
         self.assertTrue(len(business) == 0)
+
+class AlertTestClass(TestCase):
+    #Set up Method
+    def setUp(self):
+        '''
+        test case for profiles
+        '''
+        self.user = User(username='tony')
+        self.user.save()
+        self.hood = Neighborhood(name='karen')
+        self.hood.save()
+        self.alert = Alert(alert='New in the hood',posted_by=self.user,neighborhood=self.hood)
+        self.alert.save_alert()
+
+
+    def tearDown(self):
+        Alert.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.alert,Alert))
+
+    def test_create_business(self):
+        self.alert.save_alert()
+        alert = Alert.objects.all()
+        self.assertTrue(len(alert) > 0)
+
+    def test_delete_neighborhood(self):
+        self.alert.save_alert()
+        self.alert.delete_alert()
+        alert = Alert.objects.all()
+        self.assertTrue(len(alert) == 0)
