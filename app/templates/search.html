@@ -28,12 +28,20 @@
 
 
 <div class="col-md-4">
-  <hr>
-			<h3><a href='#'>{{business.name}}</a></h3>
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Name : {{business.name}}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Owner : {{business.propreiter.username}}</li>
+      <li class="list-group-item">Contact : <a href="">  {{business.email}}</a></li>
+    </ul>
+  </div>
+  <br>
+			<!-- <h3><a href='#'>{{business.name}}</a></h3>
       <p>Owner : {{business.propreiter}}</p>
-    <p>Contact :   <a href="#">{{business.email}}</a></p>
+    <p>Contact :   <a href="#">{{business.email}}</a></p> -->
 
-<hr>
 		</div>
 <hr>
     <div class="col-md-4"></div>

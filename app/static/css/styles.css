@@ -1,9 +1,8 @@
-
+/*
 
 #navbarr{
   background: #282D31;
 
-  /* background: #0099F7; */
 
 margin-bottom:80px;
 }
@@ -19,9 +18,8 @@ margin-bottom:80px;
 }
 
 #navbarrr{
-  /* background: #0099F7; */
   background: #282D31;
-  
+
 margin-bottom:80px;
 }
 #profiles{
@@ -40,7 +38,6 @@ body{
   color:black;
 }
 .ionic:hover {
-  /* font-size: 46px; */
 
   color:white;
 }
@@ -94,4 +91,4 @@ body{
   }
   .navbar .input-search:focus {
     text-align: left;
-  }
+  } */
