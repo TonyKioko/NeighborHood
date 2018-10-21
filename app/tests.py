@@ -64,3 +64,34 @@ class ProfileTestClass(TestCase):
         self.profile.delete_profile()
         profile = Profile.objects.all()
         self.assertTrue(len(profile) == 0)
+
+class BusinessTestClass(TestCase):
+    #Set up Method
+    def setUp(self):
+        '''
+        test case for profiles
+        '''
+        self.user = User(username='tony')
+        self.user.save()
+        self.hood = Neighborhood(name='karen')
+        self.hood.save()
+        self.business = Business(name='Fast Foods',propreiter=self.user,neighborhood=self.hood,email='newbusiness@hotmail.com')
+        self.business.create_business()
+
+
+    def tearDown(self):
+        Business.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.business,Business))
+
+    def test_create_business(self):
+        self.business.create_business()
+        business = Business.objects.all()
+        self.assertTrue(len(business) > 0)
+
+    def test_delete_neighborhood(self):
+        self.business.create_business()
+        self.business.delete_business()
+        business = Business.objects.all()
+        self.assertTrue(len(business) == 0)
