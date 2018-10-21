@@ -49,6 +49,29 @@ def profile(request, username):
     # alerts = Project.get_profile_pic(profile.id)
     return render(request, 'registration/profile.html', {'title':title,'profile':profile,'profile_info':profile_info,"form":form})
 
+@login_required(login_url='/accounts/login/')
+def update_profile(request):
+
+    profile = User.objects.get(username=request.user)
+    try :
+        profile_info = Profile.get_by_id(profile.id)
+    except:
+        profile_info = Profile.filter_by_id(profile.id)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            update = form.save(commit=False)
+            update.user = request.user
+            update.save()
+            # return HttpResponseRedirect(reverse('profile', username=request.user))
+
+            return redirect('profile', username=request.user)
+    else:
+        form = ProfileForm()
+
+    return render(request, 'registration/update_profile.html', {'form':form, 'profile_info':profile_info})
+
 @login_required(login_url='/accounts/login')
 def new_nhood(request):
 	current_user = request.user
