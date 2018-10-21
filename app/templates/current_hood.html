@@ -11,44 +11,45 @@
 
 <div class="col-md-4"></div>
   </div>
-
-
-<hr>
-<div class="row">
-<div class="row" style="width:40%;float:left;">
-
-  <div class="col-md" id="posts"style="">
-      <a href="{% url 'new_alert'%}" class="btn btn-info btn-outline">Create Post</a>
+  <div class="container" style="margin-left:10%;margin-top:4%">
+      <ul class="nav nav-tabs nav-justified">
+          <li style="margin-right:200px;"><a href="#nairobi" data-toggle='tab'>POSTS</a></li>
+          <li class="active info "><a href="#zanzibar" data-toggle='tab'>Business</a></li>
+      </ul>
+  <div class="tab-content" style="margin-top:4%">
     {% for alert in currenthood.alerts.all %}
+    <div id="nairobi" class="col-md-8 tab-pane fade">
 
-    <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="col-md-2">
-                  {{alert.posted_by.username}}
-                  </div>
-                  <div class="col-md-7">
-                  <p> {{alert.alert | striptags}}</p>
-                  </div>
-                  <div class="col-md-3">
+      <div class="card " style="width;300px;">
+                  <div class="card-body">
+                    <div class="card-text">
+                  <strong>{{alert.posted_by.username}}</strong>      says {{alert.alert | striptags}}
+                    </div>
+
 
                   </div>
 
                 </div>
+                   </div>
+                   {% endfor%}
 
-              </div>
 
-  </div>
-            {% endfor%}
-
-          </div>
-<div class="row" style="width:40%;float:right;margin-top:-200px;">
-  <div class="col-md-5" id="business" style="float:right;">
+<div class="col-md-4 tab-pane fade" id="zanzibar" style="">
+  <div class="" id="business" style="">
     <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a>
-
+<hr>
     {% for business in currenthood.businesses.all %}
-    <p>Name : {{business.name}}</p>
-    <p>Owner : {{business.propreiter.username}}</p>
+    <div class="card" style="width: 18rem;">
+  <div class="card-header">
+  Name : {{business.name}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Owner : {{business.propreiter.username}}</li>
+    <li class="list-group-item">Contact :  <a href="">  {{business.email}}</a></li>
+  </ul>
+</div>
 
+<hr>
     {% endfor%}
     {% else%}
     <h3>{% with request.user as name%}
@@ -58,11 +59,10 @@
     </h3>
   </div>
 </div>
-</div>
 
 
-  <!-- <div class="col-md-1"></div> -->
-<!-- </div> -->
+
+
 
 
 
