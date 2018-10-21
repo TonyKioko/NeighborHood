@@ -72,11 +72,13 @@ class Business(models.Model):
     	return businesses
 
 class Alert(models.Model):
-	alert=HTMLField()
-	posted_by=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
-	neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="alerts")
-	date_posted = models.DateTimeField(auto_now=True)
+    alert=HTMLField()
+    posted_by=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="alerts")
+    date_posted = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['alert']
 
 class Comment(models.Model):
     comment = HTMLField(default="")
