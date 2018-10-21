@@ -23,12 +23,12 @@ class NeighborhoodTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.hood,Neighborhood))
 
-    def test_save_method(self):
+    def test_create_neighborhood(self):
         self.hood.create_neighborhood()
         hoods = Neighborhood.objects.all()
         self.assertTrue(len(hoods) > 0)
 
-    def test_delete_method(self):
+    def test_delete_neighborhood(self):
         self.hood.create_neighborhood()
         self.hood.delete_neighborhood()
         hood = Neighborhood.objects.all()

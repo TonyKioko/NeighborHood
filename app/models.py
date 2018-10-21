@@ -66,10 +66,17 @@ class Business(models.Model):
 
     def __str__(self):
         return self.name
+    def create_business(self):
+        self.save()
+    def delete_business(self):
+        self.delete()
     @classmethod
     def search_by_name(cls,search_term):
     	businesses = cls.objects.filter(name__icontains=search_term)
     	return businesses
+    @classmethod
+    def update_business(cls,id,name,propreiter,neighborhood,email):
+        updated_business=cls.object.filter(id=id).update(name=name,propreiter=propreiter,neighborhood=neighborhood,email=email)
 
 class Alert(models.Model):
     alert=HTMLField()
