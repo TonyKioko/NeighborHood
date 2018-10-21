@@ -13,14 +13,18 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item text-center"> <strong>Hood population : {{ currenthood.members.count }} members</strong></li>
           <li class="list-group-item">
-            <p> <span style="margin:16px;">  <a href="{% url 'new_alert'%}" class="btn btn-info btn-outline">Post</a></span> <span>  <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a> </span></p>
+            <p> <span style="margin:16px;">  <a href="{% url 'new_alert'%}" class="btn btn-info btn-outline">Post</a></span> <span>  <a href="{% url 'add_business'%}" class="btn btn-info btn-outline">Add Business</a> </span> <span><a href="{% url 'exit_hood' id=currenthood.id%}" class="btn btn-danger btn-outline">Exit Hood</a>
+            </span>
+            </p>
+
           </li>
 
         </ul>
       </div>
 
-      <div class="col-md-4"></div>
+
     </div>
+    <div class="col-md-4"></div>
       </div>
 
     <div class="container" style="margin-left:10%;margin-top:4%">
@@ -42,8 +46,9 @@
             </div>
 
           </div>
+            <br>
           {% endfor%}
-          
+
         </div>
 
 
