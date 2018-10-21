@@ -26,7 +26,8 @@
 <a href="{% url "add_neighborhood"%}"><ion-icon name="cloud-upload" class="ionic"></ion-icon></a>
 
 
-       <a href="{}"><ion-icon name="contact" class="ionic"></ion-icon></a>
+       <a href="{% url 'profile' username=user %}"><ion-icon name="contact" class="ionic"></ion-icon></a>
+
 
       <a href="/logout"><ion-icon name="log-out" class="ionic"></ion-icon></a>
 

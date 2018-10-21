@@ -5,6 +5,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$',views.index,name='index'),
+    url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
+    url(r'^profile/update/', views.update_profile, name='update_profile'),
     url(r'^new_nhood/$',views.new_nhood,name='add_neighborhood'),
     url(r'^new_business/$',views.new_business,name='add_business'),
     url(r'^alert/$',views.new_alert,name='new_alert'),
