@@ -71,7 +71,7 @@ $(function() {
           <div class="card " style="width;370px;">
             <div class="card-body">
               <div class="card-text">
-                <strong>{{alert.posted_by.username}}</strong>               <span>{{alert.alert | striptags}}</span></a> <span style="float:right"><a href="{% url 'comment' alert_id=alert.id %}" style="margin-right:8px;">comment</a>{{alert.date_posted}}</span>
+                <strong>{{alert.posted_by.username}}</strong>               <span>{{alert.alert | striptags}}</span></a> <span style="float:right"><a href="{% url 'comment' alert_id=alert.id %}" style="margin-right:8px;">add comment</a></span>
               </div>
 
 
