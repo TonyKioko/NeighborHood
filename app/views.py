@@ -168,27 +168,33 @@ def search_business(request):
         # context={"message":message}
         return render(request, 'search.html',{"message":message})
 
-@login_required(login_url='/accounts/login')
-def single_post(request,id):
-    alert = Alert.objects.get(id = id)
-    comments = Comment.objects.order_by('-date_posted')
-
-    context={"alert":alert,"comments":comments}
-    return render(request, 'single_post.html',context)
+# @login_required(login_url='/accounts/login')
+# def single_post(request,id):
+#     alert = Alert.objects.get(id = id)
+#     comments = Comment.objects.order_by('-date_posted')
+#
+#     context={"alert":alert,"comments":comments}
+#     return render(request, 'single_post.html',context)
 
 @login_required(login_url='/accounts/login/')
-def review_project(request,alert_id):
-    # proj = Project.project_by_id(id=project_id)
-    alert = get_object_or_404(Alert, pk=alert_id)
+def post_comment(request,alert_id):
+    # alerts = Alert.objects.get(id = alert_id)
+    alerts = get_object_or_404(Alert, pk=alert_id)
+
+    comments = Comment.objects.order_by('-date_posted')
+    # alert = get_object_or_404(Alert, pk=alert_id)
     current_user = request.user
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.alert = alert
+            comment.alerts = alerts
             comment.user = current_user
             comment.save()
 
 
-            # return redirect('index')
-            return HttpResponseRedirect(reverse('single_post', args=(alert.id,)))
+            return redirect('current_hood')
+            # return HttpResponseRedirect(reverse('single_post', args=(alert.id,)))
+    else:
+        form = CommentForm()
+    return render(request, 'single_post.html', {"user":current_user,"alerts":alerts,"comments":comments,"form":form})

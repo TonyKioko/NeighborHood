@@ -97,7 +97,7 @@ class Comment(models.Model):
     comment = HTMLField(default="")
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True, blank=True)
     date_posted = models.DateTimeField(auto_now=True)
-    alert=models.ForeignKey(Alert, on_delete=models.CASCADE)
+    alert=models.ForeignKey(Alert, on_delete=models.CASCADE,null=True,blank=True,related_name="comments")
 
     def __str__(self):
         return self.comment
