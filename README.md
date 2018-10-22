@@ -1,7 +1,7 @@
 Neighborhood Watch
 ===================
 ## Description
-[Neighborhood Watch](https://pyawwards.herokuapp.com/) is a web application that allows users to be in the loop about everything happening in their neighborhood. From contact information of different handyman to meeting announcements or even alerts.
+[Neighborhood Watch](https://hood360.herokuapp.com/) is a web application that allows users to be in the loop about everything happening in their neighborhood. From contact information of different handyman to meeting announcements or even alerts.
 
 ------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ Neighborhood Watch
 7. Only view details of a single neighborhood.
 
 ### Live Link ###
-[NeighborHood](https://pyawwards.herokuapp.com/)
+[NeighborHood Watch](https://hood360.herokuapp.com/)
 ## Getting started
 
 ### Requirements
@@ -77,7 +77,7 @@ python manage.py app test
 ## Live Demo
 
 The web app can be accessed from the following link:
-[NeighborHood](https://pyawards.herokuapp.com/)
+[NeighborHood](https://hood360.herokuapp.com/)
 
 ## Technology used
 
