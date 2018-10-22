@@ -31,6 +31,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="wewe",primary_key=True)
     neighborhood=models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True,blank=True,related_name="members")
     email = models.CharField(max_length=60,blank=True)
+    # alert = models.ForeignKey(Alerts, on_delete=models.CASCADE,null=True,blank=True,related_name="members")
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -105,3 +106,5 @@ class Comment(models.Model):
         self.save()
     def delete_comment(self):
         self.delete()
+    class Meta:
+        ordering =['-date_posted']

@@ -5,6 +5,7 @@ from app.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.core.urlresolvers import reverse
 
 
 # Create your views here.
@@ -97,7 +98,7 @@ def join_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
     request.user.wewe.neighborhood = hood
     request.user.wewe.save()
-    messages.success(request, "Image uploaded!")
+    # messages.success(request, "Image uploaded!")
     return redirect('current_hood')
 
 @login_required(login_url='/accounts/login/')
@@ -188,13 +189,13 @@ def post_comment(request,alert_id):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.alerts = alerts
+            comment.alert = alerts
             comment.user = current_user
             comment.save()
 
 
-            return redirect('current_hood')
-            # return HttpResponseRedirect(reverse('single_post', args=(alert.id,)))
+            # return redirect('comment')
+            return HttpResponseRedirect(reverse('comment', args=(alerts.id,)))
     else:
         form = CommentForm()
     return render(request, 'single_post.html', {"user":current_user,"alerts":alerts,"comments":comments,"form":form})
