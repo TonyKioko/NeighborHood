@@ -14,6 +14,8 @@ urlpatterns = [
     url('^join/(?P<id>\d+)$',views.join_hood, name='join_hood'),
     url('^home/$',views.current_hood, name='current_hood'),
     url('^exit/(?P<id>\d+)$',views.exit_hood, name='exit_hood'),
+    url(r'^post_details/(?P<id>\d+)', views.single_post, name='postdetails'),
+
 
 
     ]
