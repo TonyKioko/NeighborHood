@@ -66,7 +66,7 @@ def update_profile(request):
             update.user = request.user
             update.save()
             # return HttpResponseRedirect(reverse('profile', username=request.user))
-
+            messages.success(request,"Profile Updated")
             return redirect('profile', username=request.user)
     else:
         form = ProfileForm()
@@ -75,30 +75,31 @@ def update_profile(request):
 
 @login_required(login_url='/accounts/login')
 def new_nhood(request):
-	current_user = request.user
-	if request.method == 'POST':
-		form = NeighborhoodForm(request.POST,request.FILES)
-		if form.is_valid():
-			new_nhood = form.save(commit=False)
-			new_nhood.user = current_user
-			new_nhood.save()
-            # messages.success(request, "Image uploaded!")
-			return redirect('index')
-	else:
-			form = NeighborhoodForm()
+    current_user = request.user
+    if request.method == 'POST':
+        form = NeighborhoodForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_nhood = form.save(commit=False)
+            new_nhood.user = current_user
+            new_nhood.save()
+            messages.success(request,"New Hood Created")
+            return redirect('index')
+    else:
+            form = NeighborhoodForm()
             # context= {"form":form}
-	return render(request, 'new_nhood.html',{"form":form})
+    return render(request, 'new_nhood.html',{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def current_hood(request):
     return render(request, 'current_hood.html')
+
 
 @login_required(login_url='/accounts/login/')
 def join_hood(request,id):
     hood = get_object_or_404(Neighborhood, pk=id)
     request.user.wewe.neighborhood = hood
     request.user.wewe.save()
-    # messages.success(request, "Image uploaded!")
+    messages.success(request, "You Just Joined a New Hood")
     return redirect('current_hood')
 
 @login_required(login_url='/accounts/login/')
@@ -110,6 +111,7 @@ def exit_hood(request,id):
         # messages.success(request, "Image uploaded!")
         request.user.wewe.neighborhood = None
         request.user.wewe.save()
+        messages.success(request,"Hood Exited")
     return redirect('index')
 
 @login_required(login_url='/accounts/login/')
@@ -123,7 +125,7 @@ def new_business(request):
             new_business.neighborhood=request.user.wewe.neighborhood
             assert isinstance(new_business.save, object)
             new_business.save()
-            messages.success(request, "Image uploaded!")
+            messages.success(request, "New Business Created")
             return redirect('current_hood')
     else:
         form = BusinessForm()
@@ -141,7 +143,7 @@ def new_alert(request):
             new_alert.neighborhood=request.user.wewe.neighborhood
             assert isinstance(new_alert.save, object)
             new_alert.save()
-            messages.success(request, "Image uploaded!")
+            messages.success(request, "Post created successfully")
             return redirect('current_hood')
     else:
         form = AlertForm()

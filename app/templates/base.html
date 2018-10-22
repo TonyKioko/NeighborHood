@@ -10,23 +10,16 @@
   {% else %}
     <title> NeighborHood </title>
   {% endif %}
-  <!-- {% if messages %}
+  {% if messages %}
 
       {% for message in messages %}
-  	    {% if message.tags == 'success' %}
   	    <div class="message alert alert-success alert-dismissible" role="alert">
   	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   	    {{ message }}</div>
-  	    {%else%}
-  	    <div class="alert alert-danger alert-dismissible" role="alert">
-  	    	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  	    {{ message }}</div>
-  	    {%endif%}
-
 
       {% endfor %}
 
-  {% endif %} -->
+  {% endif %}
 
 
   {% block styles %}
@@ -45,6 +38,7 @@
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      {% bootstrap_javascript %}
+     <script src="{% static 'js/scripts.js' %}"></script>
 
     {% endblock %}
 </body>
