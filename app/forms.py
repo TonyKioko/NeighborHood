@@ -27,13 +27,13 @@ class NeighborhoodForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        exclude = ['user', 'neighborhood']
+        exclude = ['propreiter', 'neighborhood']
 
 
 class AlertForm(forms.ModelForm):
     class Meta:
         model = Alert
-        exclude = ['user', 'neighbor_hood', 'date_posted']
+        exclude = ['posted_by', 'neighborhood', 'date_posted']
 
 
 class CommentForm(forms.ModelForm):
